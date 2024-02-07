@@ -1,14 +1,13 @@
+@use '../../assets/styles/mixins.scss';
+
 .main-container {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-}
 
-.card {
-  height: 15rem;
-  width: 13rem;
-  padding: 2rem;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  @include mixins.tablet {
+    padding: 0 2rem;
+  }
 }
