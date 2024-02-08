@@ -6,7 +6,6 @@ import Card from '../Card/Card';
 import './main.scss';
 
 function Main() {
-  console.log(mockData);
   return (
     <main className="main-container">
       {mockData.map((item) => (
