@@ -1,4 +1,4 @@
-@use '../../assets/styles/mixins.scss';
+@use '../../assets/styles/mixins.scss' as *;
 
 .main {
   &-container {
@@ -8,7 +8,7 @@
     max-width: var(--container-max-width);
     margin: 0 auto;
 
-    @include mixins.tablet {
+    @include tablet {
       padding: 0 2rem;
     }
   }
