@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { mockData } from './mockData';
 // components
 import Navbar from './components/Navbar/Navbar';
@@ -8,7 +9,6 @@ import MyCard from './components/MyCard/MyCard';
 import './App.scss';
 
 function App() {
-  const [tab, setTab] = useState('all'); // possible options: 'all', 'card', 'favorite'
   const [cardData, setCardData] = useState([]);
   const [data, setData] = useState(mockData);
 
@@ -34,13 +34,21 @@ function App() {
 
   return (
     <>
-      <Navbar setTab={setTab} />
-      {tab === 'all' && (
-        <Main data={data} setData={setData} setCardData={handleAddToCard} />
-      )}
-      {tab === 'card' && (
-        <MyCard cardData={cardData} setCardData={handleRemoveFromCard} />
-      )}
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Main data={data} setData={setData} setCardData={handleAddToCard} />
+          }
+        />
+        <Route
+          path="/my-card"
+          element={
+            <MyCard cardData={cardData} setCardData={handleRemoveFromCard} />
+          }
+        />
+      </Routes>
     </>
   );
 }

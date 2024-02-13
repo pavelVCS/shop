@@ -1,18 +1,6 @@
 @use '../../assets/styles/mixins.scss' as *;
 
 .main {
-  &-container {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-
-    @include tablet {
-      padding: 0 2rem;
-    }
-  }
-
   &-action-btn {
     width: 100%;
   }

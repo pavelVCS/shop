@@ -19,7 +19,7 @@ function Main({ setCardData, data, setData }) {
   };
 
   return (
-    <main className="main-container">
+    <main className="container">
       <div className="main-action-btn">
         <button
           onClick={() => {
