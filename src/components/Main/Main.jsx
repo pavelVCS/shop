@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import { mockData } from '../../mockData';
+import React from 'react';
 // components
 import Card from '../Card/Card';
 
 import './main.scss';
 
-function Main({ setCardData }) {
-  const [data, setData] = useState(mockData);
-
+function Main({ setCardData, data, setData }) {
   const handleSortData = (direction) => {
     const sortedData = data.toSorted((a, b) => {
       let fa = a.title.toLowerCase(),
