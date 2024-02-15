@@ -1,6 +1,6 @@
 import React from 'react';
 // components
-// import Button from '../Button/Button';
+import Button from '../Button/Button';
 import './card.scss';
 
 function Card({ title, description, handleCardButton, card }) {
@@ -12,9 +12,9 @@ function Card({ title, description, handleCardButton, card }) {
     <div className="card">
       <h3>{title}</h3>
       <p>{description}</p>
-      <button onClick={handleAddToCard}>
-        {card ? 'remove from card' : 'add to card'}
-      </button>
+      <Button type="teal" onClick={handleAddToCard}>
+        {card ? 'remove' : 'add to card'}
+      </Button>
     </div>
   );
 }

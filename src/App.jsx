@@ -36,16 +36,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Main
-              data={data}
-              setData={setData}
-              handleAddToCard={handleAddToCard}
-            />
-          }
-        />
+        <Route path="/" element={<Main handleAddToCard={handleAddToCard} />} />
         <Route
           path="/my-card"
           element={

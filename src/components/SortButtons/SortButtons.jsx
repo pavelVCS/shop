@@ -1,17 +1,23 @@
 import React from 'react';
+// components
+import Button from '../Button/Button';
+
 import './sortButtons.scss';
 
 function SortButtons({ handleSortData }) {
   return (
     <div className="sort-btn">
-      <button
+      <Button
+        type="teal"
         onClick={() => {
           handleSortData('az');
         }}
       >
         Sort A-Z
-      </button>
-      <button onClick={handleSortData}>Sort Z-A</button>
+      </Button>
+      <Button type="teal" onClick={handleSortData}>
+        Sort Z-A
+      </Button>
     </div>
   );
 }
