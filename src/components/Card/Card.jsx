@@ -13,7 +13,7 @@ function Card({ title, description, handleCardButton, card }) {
       <h3>{title}</h3>
       <p>{description}</p>
       <Button type="teal" onClick={handleAddToCard}>
-        {card ? 'remove' : 'add to card'}
+        {card ? 'remove' : 'add to cart'}
       </Button>
     </div>
   );
