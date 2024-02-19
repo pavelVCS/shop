@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Main from './components/Main/Main';
 import MyCart from './components/MyCart/MyCart';
+import Favorites from './components/Favorites/Favorites';
 
 import './App.scss';
 
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/my-cart" element={<MyCart />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </>
   );
