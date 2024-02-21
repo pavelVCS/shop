@@ -13,3 +13,39 @@
   line-height: 3rem;
   font-size: 1.8rem;
 }
+.offcanvas-header,
+.offcanvas-body {
+  background-color: var(--dark-bg);
+  color: var(--light-font);
+}
+
+.offcanvas-header {
+  padding-bottom: 0 !important;
+  .offcanvas-title {
+    color: var(--orange-300);
+    font-weight: 200;
+    font-size: 2rem;
+  }
+}
+
+.offcanvas-body {
+  h5 {
+    color: var(--orange-300);
+    line-height: 2rem;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    border-bottom: 1px solid var(--orange-300);
+  }
+
+  svg {
+    color: var(--orange-300);
+    margin-right: 1rem;
+  }
+
+  .geo {
+    div {
+      margin-left: 2rem;
+    }
+  }
+}

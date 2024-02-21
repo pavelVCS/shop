@@ -8,7 +8,7 @@ import './navbar.scss';
 function Navbar() {
   return (
     <nav className="nav-container">
-      <h1>My Shop</h1>
+      <h3>My Shop</h3>
       <ul>
         <li>
           <NavLink to="/">All items</NavLink>
