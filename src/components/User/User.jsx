@@ -30,7 +30,7 @@ function User() {
       setLoading(true);
       try {
         const response = await fetch(
-          'https://jsonplaceholder.typicode.com/users/1'
+          'https://jsonplaceholder.typicode.com/users/2'
         );
 
         if (!response.ok) throw new Error('Something went wrong');
@@ -101,18 +101,18 @@ function User() {
                 <FontAwesomeIcon icon={faCity} />
                 {user?.address?.city}
               </p>
-              <p className="geo">
+              <div className="geo">
                 <FontAwesomeIcon icon={faMapLocationDot} />
                 geo:
-                <div>
+                <p>
                   <FontAwesomeIcon icon={faMapPin} />
                   lat: {user?.address?.geo.lat}
-                </div>
-                <div>
+                </p>
+                <p>
                   <FontAwesomeIcon icon={faMapPin} />
                   lng: {user?.address?.geo.lng}
-                </div>
-              </p>
+                </p>
+              </div>
               <p>
                 <FontAwesomeIcon icon={faRoad} />
                 {user?.address?.street}
