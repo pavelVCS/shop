@@ -32,7 +32,7 @@ function User() {
         const response = await fetch(
           'https://jsonplaceholder.typicode.com/users/2'
         );
-        console.log(response);
+
         if (!response.ok) throw new Error('Something went wrong');
 
         const data = await response.json();
@@ -101,18 +101,18 @@ function User() {
                 <FontAwesomeIcon icon={faCity} />
                 {user?.address?.city}
               </p>
-              <p className="geo">
+              <div className="geo">
                 <FontAwesomeIcon icon={faMapLocationDot} />
                 geo:
-                <div>
+                <p>
                   <FontAwesomeIcon icon={faMapPin} />
                   lat: {user?.address?.geo.lat}
-                </div>
-                <div>
+                </p>
+                <p>
                   <FontAwesomeIcon icon={faMapPin} />
                   lng: {user?.address?.geo.lng}
-                </div>
-              </p>
+                </p>
+              </div>
               <p>
                 <FontAwesomeIcon icon={faRoad} />
                 {user?.address?.street}
