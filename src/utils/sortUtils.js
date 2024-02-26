@@ -1,5 +1,7 @@
 export const handleSort = (arr, direction) => {
-  const sortedData = arr.toSorted((a, b) => {
+  if (!Array.isArray(arr)) return [];
+  const sortedData = [...arr].sort((a, b) => {
+    if (!a.title || !b.title) return 0;
     let fa = a.title.toLowerCase(),
       fb = b.title.toLowerCase();
 
