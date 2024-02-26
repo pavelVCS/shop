@@ -23,10 +23,16 @@ it('should return empty array if not array is provided', () => {
   expect(handleSort(undefined)).toEqual([]);
 });
 
-// test if all objects have title property
 it('should return same array if no title property is found', () => {
   const arr = [{ name: 'b' }, { name: 'a' }, { name: 'c' }];
 
   const result = handleSort(arr);
   expect(result).toEqual([{ name: 'b' }, { name: 'a' }, { name: 'c' }]);
+});
+
+it('should return same array if no title property at least in one object', () => {
+  const arr = [{ name: 'b' }, { title: 'a' }, { title: 'c' }];
+
+  const result = handleSort(arr);
+  expect(result).toEqual(arr);
 });
