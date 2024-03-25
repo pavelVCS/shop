@@ -25,7 +25,7 @@ function Main() {
           placeholder="Search..."
           value={searchValue}
           onChange={(e) => {
-            setSearchValue(e.target.value.toLowerCase());
+            setSearchValue(e.target.value);
           }}
         />
       </div>
@@ -33,7 +33,7 @@ function Main() {
         .filter(
           ({ title, description }) =>
             title.toLowerCase().includes(searchValue) ||
-            description.toLowerCase().includes(searchValue)
+            description.toLowerCase().includes(searchValue.toLowerCase())
         )
         .map((item) => (
           <Card
