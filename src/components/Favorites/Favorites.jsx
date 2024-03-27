@@ -14,7 +14,7 @@ function Favorites() {
   };
 
   return (
-    <main className="container">
+    <main className="custom-container">
       <SortButtons handleSortData={handleSortData} />
 
       {favoritesData.map((item) => (

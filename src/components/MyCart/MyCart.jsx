@@ -15,7 +15,7 @@ function MyCard() {
   };
 
   return (
-    <main className="container">
+    <main className="custom-container">
       <SortButtons handleSortData={handleSortData} />
 
       {cartData.map(({ title, description }) => (
