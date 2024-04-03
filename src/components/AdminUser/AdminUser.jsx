@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import {
-  Spinner,
-  Offcanvas,
-  Form,
-  Row,
-  Col,
-  Button,
-  Alert,
-} from 'react-bootstrap';
+import { Spinner, Offcanvas, Form, Row, Col, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { cfg } from '../../cfg/cfg';
+import useAuth from '../../hooks/useAuth';
+import Button from '../Button/Button';
+import './adminUser.scss';
 
 function AdminUser() {
   const [show, setShow] = useState(false);
@@ -19,6 +14,7 @@ function AdminUser() {
   const [validated, setValidated] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { token, setToken } = useAuth();
 
   const handleClose = () => {
     setShow(false);
@@ -52,6 +48,7 @@ function AdminUser() {
 
       const user = await response.json();
       console.log(user);
+      setToken(user.token);
     } catch (error) {
       console.log(error.message);
       setError(true);
@@ -67,7 +64,9 @@ function AdminUser() {
       </div>
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton closeVariant="white">
-          <Offcanvas.Title>Login</Offcanvas.Title>
+          <Offcanvas.Title>
+            {token ? 'You are logged in' : 'Login'}
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           {error && (
@@ -90,7 +89,7 @@ function AdminUser() {
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
-            <Row style={{ marginTop: '1rem' }}>
+            <Row style={{ marginTop: '1rem', marginBottom: '2rem' }}>
               <Form.Group as={Col} controlId="validationCustom02">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
@@ -107,11 +106,7 @@ function AdminUser() {
               </Form.Group>
             </Row>
 
-            <Button
-              style={{ marginTop: '2rem' }}
-              type="submit"
-              disabled={loading}
-            >
+            <Button buttonType="submit" disabled={loading || token}>
               Login
             </Button>
             {loading && <Spinner animation="border" variant="primary" />}

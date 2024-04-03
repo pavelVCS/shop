@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import {
-  Form,
-  Container,
-  Row,
-  Col,
-  Button,
-  Spinner,
-  Alert,
-} from 'react-bootstrap';
+import React, { useState, useContext } from 'react';
+import { Form, Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
+import useAuth from '../../hooks/useAuth';
+import { AppContext } from '../../context/AppContext';
 import { cfg } from '../../cfg/cfg';
+
+// components
+import Button from '../Button/Button';
 
 function Admin() {
   const [validated, setValidated] = useState(false);
@@ -20,6 +17,8 @@ function Admin() {
     value: null, // 'success' | 'danger'
     message: '',
   });
+  const { token } = useAuth();
+  const { fetchData } = useContext(AppContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +42,7 @@ function Admin() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       });
@@ -51,9 +51,8 @@ function Admin() {
 
       if (!response.ok) throw new Error(product.error);
 
-      console.log(product);
-
       setStatus({ value: 'success', message: 'Product created successfully' });
+      fetchData();
     } catch (error) {
       setStatus({
         value: 'danger',
@@ -103,7 +102,7 @@ function Admin() {
               </Form.Control.Feedback>
             </Form.Group>
           </Row>
-          <Row>
+          <Row style={{ marginBottom: '2rem' }}>
             <Form.Group as={Col} md="4" controlId="validationCustom03">
               <Form.Label>Image url</Form.Label>
               <Form.Control
@@ -115,7 +114,7 @@ function Admin() {
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
           </Row>
-          <Button type="submit" disabled={loading}>
+          <Button type="teal" buttonType="submit" disabled={loading}>
             Create product
           </Button>
           {loading && <Spinner animation="border" variant="primary" />}

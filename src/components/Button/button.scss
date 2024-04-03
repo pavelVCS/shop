@@ -78,6 +78,27 @@
     color: var(--orange-500);
     box-shadow: 0 0 15px var(--orange-500);
   }
+
+  // disable button
+  &:disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+
+    &:hover {
+      letter-spacing: 0.1em;
+      box-shadow: none;
+
+      i:before {
+        width: 10px;
+        left: 80%;
+      }
+
+      i:after {
+        width: 10px;
+        left: 20%;
+      }
+    }
+  }
 }
 
 .teal {
