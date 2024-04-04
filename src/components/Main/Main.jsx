@@ -8,7 +8,8 @@ import SortButtons from '../SortButtons/SortButtons';
 import './main.scss';
 
 function Main() {
-  const { data, setData, handleAddToCard } = useContext(AppContext);
+  const { data, setData, handleAddToCard, loadingProducts } =
+    useContext(AppContext);
   const [searchValue, setSearchValue] = useState('');
 
   const handleSortData = (direction) => {
@@ -29,7 +30,10 @@ function Main() {
           }}
         />
       </div>
-      {!data.length && <h2>There is no items in the shop..</h2>}
+      {loadingProducts && !data.length && <h2>Loading...</h2>}
+      {!data.length && !loadingProducts && (
+        <h2>There is no items in the shop..</h2>
+      )}
       {data
         .filter(
           ({ title, description }) =>

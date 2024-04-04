@@ -17,8 +17,8 @@ function Admin() {
     value: null, // 'success' | 'danger'
     message: '',
   });
-  const { token } = useAuth();
-  const { fetchData } = useContext(AppContext);
+  const { token, setToken } = useAuth();
+  const { fetchData, setShowLogin } = useContext(AppContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,7 +49,16 @@ function Admin() {
 
       const product = await response.json();
 
-      if (!response.ok) throw new Error(product.error);
+      console.log(response);
+      if (!response.ok) {
+        if (response.status === 401) {
+          setToken(null);
+          setShowLogin(true);
+          alert('Login expired. Please login again.');
+        }
+
+        throw new Error(product.error);
+      }
 
       setStatus({ value: 'success', message: 'Product created successfully' });
       fetchData();
